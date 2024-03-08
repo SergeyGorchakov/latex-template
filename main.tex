@@ -1,0 +1,43 @@
+\documentclass[12pt,a4paper]{memoir}
+
+\input{packages}
+% set image dir
+\graphicspath{{img}}
+% hyperlink settings
+\hypersetup{
+  colorlinks = true,
+  %linkbordercolor = {white}
+  linkcolor = {blue!20!black},
+  citecolor = {blue!20!black},
+  urlcolor = {blue!20!black}
+}
+% acronyms settings
+\setabbreviationstyle[acronym]{short-long}
+\loadglsentries{acronyms}
+
+\title{My title}
+\author{My name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{First chapter}
+
+Insert acronym: \gls{xxx}.
+
+Insert references: \cite{key}.
+
+Insert equation:
+\begin{equation}
+  \vec F = m \vec a
+\end{equation}
+
+\printglossaries
+
+\printbibliography
+
+\end{document}

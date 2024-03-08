@@ -1,0 +1,79 @@
+% language settings
+\newif\ifrus
+\newif\ifeng
+\engtrue
+
+\newcommand{\lrus}[1]{\ifrus#1\fi}
+\newcommand{\leng}[1]{\ifeng#1\fi}
+
+% environments 
+\newenvironment{rus}[1]
+{\ifrus {#1}\else \setbox0\vbox\bgroup\fi}
+{\ifrus\else \egroup \fi}
+\newenvironment{eng}[1]
+{\ifeng {#1}\else \setbox0\vbox\bgroup\fi}
+{\ifeng\else \egroup \fi}
+
+% font 
+%\usepackage[utf8]{inputenc} % inputenc package ignored with utf8 based engines
+\usepackage{fontspec}
+\ifrus
+  \usepackage[russian]{babel}
+\fi
+\ifeng
+  \usepackage[english]{babel}
+\fi
+\setmainfont{Tempora} % like Times New Roman
+\usepackage{xspace}
+
+% color 
+\usepackage[dvipsnames]{xcolor}
+
+% page 
+\usepackage{geometry}
+
+% Paragraph 
+\usepackage{indentfirst}
+
+% sections
+\usepackage{titlesec}
+
+% number enumerate 
+\usepackage{enumitem}
+
+% graphics 
+\usepackage{graphicx}
+\usepackage{svg}
+
+% figures and 
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% tables
+\usepackage{xltabular}
+\usepackage{makecell}
+
+% hyperlinks 
+\usepackage{hyperref}
+
+\usepackage[autostyle]{csquotes}
+
+% references 
+\usepackage[\lrus{language=russian} \leng{language=english}, backend=biber, sorting=none]{biblatex}
+\addbibresource{references.bib}
+
+% AMS
+%\usepackage{amsthm,amsmath,amscd}
+%\usepackage{amsfonts,amssymb}
+\usepackage{unicode-math}
+
+% references 
+\usepackage[russian,english]{cleveref}
+\lrus{\input{tucyradd.def}} % cyrillic font for cleveref 
+
+% glossaries 
+% toc, nopostdot, translate=babel by default 
+\usepackage[nonumberlist]{glossaries-extra}
+\makeglossaries
+
