@@ -4,9 +4,11 @@ This template allows you to create latex documents with using Docker.
 
 ## Requirements
 
-You need to have [Docker](https://www.docker.com/) installed on your system.
+You can run it using github/Codespaces.
 
-Or you can run it using github/Codespaces.
+Or 
+
+You need to have [Docker](https://www.docker.com/) installed on your system.
 
 ## LICENSE
 
