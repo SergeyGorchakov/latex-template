@@ -1,6 +1,6 @@
 # Latex template  
 
-This template allows you to create latex documents with using Docker. 
+This template allows you to create latex documents with using devcontainer.
 
 ## Requirements
 
