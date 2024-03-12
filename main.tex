@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{memoir}
+\documentclass[12pt,a4paper]{report}
 
 \input{packages}
 % set image dir
@@ -7,16 +7,17 @@
 \hypersetup{
   colorlinks = true,
   %linkbordercolor = {white}
-  linkcolor = {blue!20!black},
-  citecolor = {blue!20!black},
-  urlcolor = {blue!20!black}
+  linkcolor = {blue!50!black},
+  citecolor = {blue!50!black},
+  urlcolor = {blue!50!black}
 }
 % acronyms settings
 \setabbreviationstyle[acronym]{short-long}
 \loadglsentries{acronyms}
+\loadglsentries{gls-symbols}
 
-\title{My title}
-\author{My name}
+\title{\lrus{Название}\leng{My title}}
+\author{\leng{My name}\lrus{Имя}}
 \date{\today}
 
 \begin{document}
@@ -25,18 +26,26 @@
 
 \tableofcontents
 
-\chapter{First chapter}
+\chapter{\leng{First chapter}\lrus{Первая глава}}
 
-Insert acronym: \gls{xxx}.
+\leng{Insert acronym}\lrus{Вставить акроним}: \gls{xxx}.
 
-Insert references: \cite{key}.
+\leng{Insert references}\lrus{Вставить ссылку}: \cite{key}.
 
-Insert equation:
+\leng{Insert equation}\lrus{Вставить уравнение}:
 \begin{equation}
   \vec F = m \vec a
 \end{equation}
 
-\printglossaries
+\leng{Insert equation with autodefinition of symbols}
+\lrus{Вставить уравнение с автоопределением символов}:
+\begin{equation-gls}
+\gls{area} = \gls{pi}\gls{radius}[^2]
+\end{equation-gls}
+
+\printglossary[type=\acronymtype,title=\leng{Glossary}\lrus{Список сокращений}]
+
+\printglossary[type={symbols}]
 
 \printbibliography
 

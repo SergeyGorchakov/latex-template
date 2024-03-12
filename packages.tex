@@ -1,6 +1,7 @@
 % language settings
 \newif\ifrus
 \newif\ifeng
+%\rustrue
 \engtrue
 
 \newcommand{\lrus}[1]{\ifrus#1\fi}
@@ -17,12 +18,7 @@
 % font 
 %\usepackage[utf8]{inputenc} % inputenc package ignored with utf8 based engines
 \usepackage{fontspec}
-\ifrus
-  \usepackage[russian]{babel}
-\fi
-\ifeng
-  \usepackage[english]{babel}
-\fi
+\usepackage[english,\lrus{russian}]{babel}
 \setmainfont{Tempora} % like Times New Roman
 \usepackage{xspace}
 
@@ -68,6 +64,9 @@
 %\usepackage{amsfonts,amssymb}
 \usepackage{unicode-math}
 
+% SI
+\usepackage{siunitx}
+
 % references 
 \usepackage[russian,english]{cleveref}
 \lrus{\input{tucyradd.def}} % cyrillic font for cleveref 
@@ -75,5 +74,30 @@
 % glossaries 
 % toc, nopostdot, translate=babel by default 
 \usepackage[nonumberlist]{glossaries-extra}
+\newglossary*{symbols}{\leng{Symbols}\lrus{Список математических символов}}
+
+% glossary - equation environment 
+\newcommand{\doglossaryentry}[1]{% handler macro
+  \gls{#1} & - & \glossentrydesc{#1}, & [\glssymbol{#1}]\glspostdescription\\%
+}
+
+\newcounter{localglossary}
+\newenvironment{equation-gls}
+{%
+  \stepcounter{localglossary}%
+  \renewcommand{\glolinkprefix}{\thelocalglossary.}%
+  \GlsXtrStartUnsetBuffering*
+  \begin{equation}
+    }
+    {%
+  \end{equation}
+  \leng{where}\lrus{где}
+  \par
+  \begin{tabular}{llll}
+    \GlsXtrForUnsetBufferedList\doglossaryentry
+  \end{tabular}
+  \GlsXtrStopUnsetBuffering
+  \par
+}
 \makeglossaries
 
